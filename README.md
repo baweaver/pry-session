@@ -4,15 +4,42 @@ http://showterm.io/b8d9f8e6ec11b76f6aea0
 
 Save a session:
 ```ruby
-save-session testing
+[2] pry(main)> a = 1
+=> 1
+[3] pry(main)> Person = Struct.new(:name, :age)
+=> Person
+[4] pry(main)> brandon = Person.new 'brandon', 23
+=> #<struct Person name="brandon", age=23>
+[5] pry(main)> save-session person
+[6] pry(main)> exit
 ```
 
-Reload a session:
+Reload a session in a new Pry session:
 ```ruby
-load-session testing
+[1] pry(main)> brandon
+NameError: undefined local variable or method `brandon' for main:Object
+from (pry):1:in `__pry__'
+[2] pry(main)> load-session person
+[4] pry(main)> a = 1
+
+[5] pry(main)> Person = Struct.new(:name, :age)
+
+[6] pry(main)> brandon = Person.new 'brandon', 23
+
+=> #<struct Person name="brandon", age=23>
+[7] pry(main)> brandon
+=> #<struct Person name="brandon", age=23>
+[8] pry(main)> # MAGIC!
+[9] pry(main)> exit
+
 ```
 
 Simple as that!
+
+## To Do
+
+* Add output silencers by default on session loads
+* Add a new-session option to reset the current session history counters
 
 ## Installation
 
