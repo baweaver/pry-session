@@ -1,9 +1,9 @@
 # Pry-Session
 
-http://showterm.io/b8d9f8e6ec11b76f6aea0
+(Save and load) http://showterm.io/b8d9f8e6ec11b76f6aea0
 
 Save a session:
-```ruby
+```
 [2] pry(main)> a = 1
 => 1
 [3] pry(main)> Person = Struct.new(:name, :age)
@@ -15,7 +15,7 @@ Save a session:
 ```
 
 Reload a session in a new Pry session:
-```ruby
+```
 [1] pry(main)> brandon
 NameError: undefined local variable or method `brandon' for main:Object
 from (pry):1:in `__pry__'
@@ -34,7 +34,32 @@ from (pry):1:in `__pry__'
 
 ```
 
-Simple as that!
+List your sessions: http://showterm.io/9b843c6f8bfd8057f0d5e
+```
+[1] pry(main)> list-sessions
+test                     6 bytes 2014-06-11 01:19:43 -0500
+testing                 33 bytes 2014-06-11 01:20:45 -0500
+person                 102 bytes 2014-06-11 01:25:05 -0500
+[2] pry(main)> list-sessions test
+test                     6 bytes 2014-06-11 01:19:43 -0500
+[3] pry(main)> list-sessions -g te
+test                     6 bytes 2014-06-11 01:19:43 -0500
+testing                 33 bytes 2014-06-11 01:20:45 -0500
+[5] pry(main)> list-sessions -g te -s name:desc
+testing                 33 bytes 2014-06-11 01:20:45 -0500
+test                     6 bytes 2014-06-11 01:19:43 -0500
+[6] pry(main)> list-sessions -g te -s size:desc
+testing                 33 bytes 2014-06-11 01:20:45 -0500
+test                     6 bytes 2014-06-11 01:19:43 -0500
+[7] pry(main)> list-sessions -g te -s date:desc
+test                     6 bytes 2014-06-11 01:19:43 -0500
+testing                 33 bytes 2014-06-11 01:20:45 -0500
+```
+
+Edit a session: http://showterm.io/a6ef896322bd8fab71a85
+```
+[1] pry(main)> edit-session test  
+```
 
 ## To Do
 
